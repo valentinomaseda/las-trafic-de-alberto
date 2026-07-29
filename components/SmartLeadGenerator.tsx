@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Map, Users, CalendarDays, Send } from 'lucide-react';
 
 export default function SmartLeadGenerator() {
+  const telefonoWhatsApp = '5492478505684';
   const [formData, setFormData] = useState({
     destino: '',
     pasajeros: '',
@@ -15,19 +16,16 @@ export default function SmartLeadGenerator() {
   const handleWhatsAppRedirect = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Construimos un mensaje altamente estructurado para facilitarle el cierre a Alberto
-    const mensaje = `👋 ¡Hola Alberto! Vengo de la web y me gustaría que me ayudes a armar un viaje a medida.
-    
-📍 *Destino/Idea:* ${formData.destino}
-👥 *Somos:* ${formData.pasajeros} personas
-📅 *Fecha aproximada:* ${formData.fechaAprox}
-🎒 *Tipo de viaje:* ${formData.tipoViaje === 'vacaciones' ? 'Vacaciones/Turismo' : formData.tipoViaje === 'evento' ? 'Evento/Casamiento' : 'Viaje Corporativo'}
+    const mensaje = `Hola Alberto, vengo de la web y me gustaria que me ayudes a armar un viaje a medida.
 
-¿Me podrías asesorar con las opciones y un presupuesto? ¡Gracias!`;
+Destino o idea: ${formData.destino}
+Somos: ${formData.pasajeros} personas
+Fecha aproximada: ${formData.fechaAprox}
+Tipo de viaje: ${formData.tipoViaje === 'vacaciones' ? 'Vacaciones / Turismo' : formData.tipoViaje === 'evento' ? 'Evento / Casamiento' : 'Viaje Corporativo'}
 
-    // Número de Alberto (reemplazar)
-    const telefono = '5491100000000';
-    const whatsappUrl = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+Me podrias asesorar con las opciones y un presupuesto? Gracias.`;
+
+    const whatsappUrl = `https://wa.me/${telefonoWhatsApp}?text=${encodeURIComponent(mensaje)}`;
     
     window.open(whatsappUrl, '_blank');
   };

@@ -4,17 +4,17 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, PhoneCall, X } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useScrolled } from '../hooks/useScrolled';
 
-const whatsappHref = 'https://wa.me/5490000000000?text=Hola%20quiero%20cotizar%20un%20viaje%20con%20Las%20Trafic%20De%20Alberto';
+const whatsappHref = 'https://wa.me/5492478505684?text=Hola%20quiero%20cotizar%20un%20viaje%20con%20Las%20Trafic%20De%20Alberto';
 
 const navItems = [
   { label: 'Inicio', href: '#top' },
-  { label: 'Vacaciones', href: '#vacaciones' },
-  { label: 'Servicios', href: '#servicios' },
   { label: 'Destinos', href: '#destinos' },
-  { label: 'Nosotros', href: '#about' },
-  { label: 'Pagos', href: '#pagos' },
+  { label: 'Vacaciones', href: '#vacaciones' },
+  { label: 'Soluciones', href: '#soluciones' },
+  { label: 'Servicios', href: '#servicios' },
   { label: 'Opiniones', href: '#opiniones' },
 ];
 
@@ -68,34 +68,56 @@ export function Navbar() {
         </button>
       </nav>
 
-      {menuOpen ? (
-        <div id="mobile-menu" className={`border-t ${scrolled ? 'border-[#e8e9ed] bg-white/98' : 'border-white/10 bg-slate-950/95'} md:hidden`}>
-          <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6">
-            <div className="grid gap-2 rounded-[1.75rem] border border-[#e8e9ed] bg-white p-4 shadow-lg shadow-black/5">
-              {navItems.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-[#e8e9ed] hover:text-[#da0200]"
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <Link
-                href={whatsappHref}
-                target="_blank"
-                rel="noreferrer"
-                onClick={() => setMenuOpen(false)}
-                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-[#da0200] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#da0200]/25 transition hover:opacity-90"
+      <AnimatePresence initial={false}>
+        {menuOpen ? (
+          <motion.div
+            id="mobile-menu"
+            key="mobile-menu"
+            initial={{ opacity: 0, height: 0, y: -8 }}
+            animate={{ opacity: 1, height: 'auto', y: 0 }}
+            exit={{ opacity: 0, height: 0, y: -8 }}
+            transition={{ duration: 0.26, ease: [0.22, 1, 0.36, 1] }}
+            className={`overflow-hidden border-t ${scrolled ? 'border-[#e8e9ed] bg-white/98' : 'border-white/10 bg-slate-950/95'} md:hidden`}
+          >
+            <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6">
+              <motion.div
+                initial={{ opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.22, ease: 'easeOut' }}
+                className="grid gap-2 rounded-[1.75rem] border border-[#e8e9ed] bg-white p-4 shadow-lg shadow-black/5"
               >
-                <PhoneCall className="h-4 w-4" />
-                Cotizar por WhatsApp
-              </Link>
+                {navItems.map((item, index) => (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, x: -8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.22, delay: index * 0.03 }}
+                  >
+                    <Link
+                      href={item.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="flex rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-[#e8e9ed] hover:text-[#da0200]"
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
+                ))}
+                <Link
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setMenuOpen(false)}
+                  className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-[#da0200] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#da0200]/25 transition hover:opacity-90"
+                >
+                  <PhoneCall className="h-4 w-4" />
+                  Cotizar por WhatsApp
+                </Link>
+              </motion.div>
             </div>
-          </div>
-        </div>
-      ) : null}
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </header>
   );
 }

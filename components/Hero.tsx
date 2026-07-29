@@ -24,15 +24,15 @@ export function Hero() {
         <SectionReveal className="max-w-3xl">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white backdrop-blur">
             <ShieldCheck className="h-4 w-4 text-[#da0200]" />
-            Traslados grupales seguros y puntuales
+            Vacaciones, traslados y viajes grupales por WhatsApp
           </div>
 
           <h1 className="max-w-2xl text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Viajes grupales con la confianza que tu familia y tu empresa merecen.
+            Organizamos tus vacaciones con la confianza que tu familia merece.
           </h1>
 
           <p className="mt-6 max-w-2xl text-base leading-7 text-white/90 sm:text-lg">
-            Flota moderna, choferes profesionales y atención coordinada de principio a fin para que cada traslado sea cómodo, seguro y sin fricciones.
+            Desde vacaciones hasta traslados corporativos, resolvemos cada viaje con flota moderna, choferes profesionales y atención directa por WhatsApp.
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -53,11 +53,11 @@ export function Hero() {
             </Link>
           </div>
 
-          <div className="mt-10 grid max-w-xl gap-3 sm:grid-cols-3">
+          <div className="mt-10 grid max-w-xl gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              'Atención personalizada',
-              'Coordinación ágil',
-              'Cobertura para grupos',
+              'Vacaciones grupales',
+              'Viajes corporativos',
+              'Turismo nacional e internacional',
             ].map((item) => (
               <div key={item} className="rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-sm text-white backdrop-blur">
                 {item}
@@ -73,24 +73,24 @@ export function Hero() {
             className="overflow-hidden rounded-[2rem] border border-white/15 bg-white/12 p-4 shadow-2xl shadow-black/25 backdrop-blur"
           >
             <div className="rounded-[1.5rem] bg-white p-6 text-slate-900 shadow-xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#da0200]">Viaje sin preocupaciones</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#da0200]">Vacaciones y confort</p>
               <h2 className="mt-3 text-2xl font-semibold leading-tight text-slate-900">
-                Un servicio pensado para familias, colegios y equipos de trabajo.
+                Pensado para familias, grupos y empresas que quieren resolver todo en un solo lugar.
               </h2>
               <p className="mt-4 text-sm leading-7 text-slate-600">
-                Control de tiempos, comunicación clara y experiencia operativa para que cada recorrido mantenga un estándar alto de seguridad y confort.
+                Coordinamos salidas, rutas y horarios para que el viaje salga ordenado desde el primer contacto.
               </p>
 
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 <div className="rounded-2xl bg-[#e8e9ed] p-4">
                   <Users2 className="h-5 w-5 text-[#da0200]" />
-                  <p className="mt-3 text-sm font-semibold text-slate-900">Grupos coordinados</p>
-                  <p className="mt-1 text-sm text-slate-600">Puntos de encuentro y salidas ordenadas.</p>
+                  <p className="mt-3 text-sm font-semibold text-slate-900">Vacaciones</p>
+                  <p className="mt-1 text-sm text-slate-600">La propuesta principal de la empresa.</p>
                 </div>
                 <div className="rounded-2xl bg-[#e8e9ed] p-4">
                   <ShieldCheck className="h-5 w-5 text-[#da0200]" />
-                  <p className="mt-3 text-sm font-semibold text-slate-900">Operación confiable</p>
-                  <p className="mt-1 text-sm text-slate-600">Un proceso claro desde la consulta hasta el viaje.</p>
+                  <p className="mt-3 text-sm font-semibold text-slate-900">Coordinación</p>
+                  <p className="mt-1 text-sm text-slate-600">Un proceso claro desde la consulta hasta la salida.</p>
                 </div>
               </div>
             </div>

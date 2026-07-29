@@ -3,6 +3,8 @@ import { Hero } from '../components/Hero';
 import { MetricsBar } from '../components/MetricsBar';
 import { ServicesOverview } from '../components/ServicesOverview';
 import { AboutPreview } from '../components/AboutPreview';
+import { PaymentMethods } from '../components/PaymentMethods';
+import { Testimonials } from '../components/Testimonials';
 
 export default function Page() {
   return (
@@ -12,6 +14,8 @@ export default function Page() {
       <MetricsBar />
       <ServicesOverview />
       <AboutPreview />
+      <PaymentMethods />
+      <Testimonials />
 
       <section id="cotizar" className="bg-white px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl rounded-[2rem] border border-[#e8e9ed] bg-[#e8e9ed]/35 px-6 py-10 sm:px-10 sm:py-12">

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, PhoneCall } from 'lucide-react';
 import { useScrolled } from '../hooks/useScrolled';
 
@@ -19,14 +20,8 @@ export function Navbar() {
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <Link href="#top" className="flex items-center gap-3">
-          <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#da0200] text-sm font-semibold text-white shadow-lg shadow-[#da0200]/20">
-            LT
-          </span>
-          <span className="leading-tight">
-            <span className="block text-sm font-semibold tracking-[0.22em] text-[#da0200] uppercase">
-              Las Trafic
-            </span>
-            <span className="block text-base font-semibold text-slate-900">De Alberto</span>
+          <span className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-lg shadow-[#da0200]/10 ring-1 ring-[#e8e9ed]">
+            <Image src="/images/logo.jpg" alt="Las Trafic De Alberto" width={55} height={55} className="h-full w-full object-cover" priority />
           </span>
         </Link>
 

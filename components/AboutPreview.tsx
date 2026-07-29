@@ -1,6 +1,6 @@
 'use client';
 
-import { CheckCircle2, Map, Users2 } from 'lucide-react';
+import { CheckCircle2, MapPinHouse, Users2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { SectionReveal } from './SectionReveal';
 
@@ -11,28 +11,28 @@ export function AboutPreview() {
         <SectionReveal className="flex flex-col justify-center">
           <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#da0200]">Sobre el servicio</p>
           <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-            Confort, profesionalismo y una operación pensada para grupos que no pueden improvisar.
+            El viaje empieza con vacaciones bien organizadas y se sostiene con una operación seria, prolija y confiable.
           </h2>
           <p className="mt-6 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
-            Trabajamos con una experiencia orientada a reducir fricciones: puntualidad, trato cordial y vehículos preparados para traslados ejecutivos, familiares o turísticos con una coordinación clara.
+            Priorizamos la experiencia de viaje de punta a punta: vacaciones, traslados corporativos y turismo, con atención directa y una propuesta flexible para cada grupo.
           </p>
 
           <div className="mt-8 space-y-4">
             {[
               {
                 icon: Users2,
-                title: 'Choferes profesionales',
-                text: 'Manejo responsable y trato amable en cada trayecto.',
+                title: 'Vacaciones como prioridad',
+                text: 'La propuesta más relevante para familias y grupos que quieren disfrutar sin complicaciones.',
               },
               {
-                icon: Map,
-                title: 'Rutas coordinadas',
-                text: 'Planificación para puntos de partida, llegada y espera.',
+                icon: MapPinHouse,
+                title: 'Cobertura de múltiples destinos',
+                text: 'Viajes corporativos, empresariales, eventos y turismo nacional o limítrofe.',
               },
               {
                 icon: CheckCircle2,
-                title: 'Confort consistente',
-                text: 'Una experiencia de viaje que mantiene el estándar de principio a fin.',
+                title: 'Experiencia ordenada',
+                text: 'Coordinación clara, trato cordial y una operación pensada para resolver rápido.',
               },
             ].map(({ icon: Icon, title, text }) => (
               <article key={title} className="flex gap-4 rounded-3xl border border-[#e8e9ed] bg-[#e8e9ed]/45 p-5 shadow-sm transition hover:shadow-md">

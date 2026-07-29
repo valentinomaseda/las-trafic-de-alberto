@@ -1,162 +1,119 @@
 'use client';
 
-import Link from 'next/link';
-import { ChevronLeft, ChevronRight, MapPinned } from 'lucide-react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
-import { SectionReveal } from './SectionReveal';
+import { MapPin, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
-const whatsappBase = 'https://wa.me/5490000000000';
-const placeImage = '/images/mardel.jpg';
-
-const destinations = [
+// Idealmente esto viene de un CMS o un archivo de constantes
+const DESTINOS = [
   {
-    name: 'Córdoba',
-    description: 'Escapadas, circuitos serranos y viajes grupales con salida coordinada.',
+    id: 1,
+    title: 'Cataratas del Iguazú',
+    subtitle: 'Aventura y naturaleza',
+    image: '/images/destinos/cataratas.jpg', // Reemplaza con rutas reales
+    tags: ['7 días', 'Familiar']
   },
   {
-    name: 'Mendoza',
-    description: 'Turismo, bodegas y recorridos para grupos con planificación simple.',
+    id: 2,
+    title: 'Costa Atlántica',
+    subtitle: 'Relax frente al mar',
+    image: '/images/destinos/mardel.jpg', 
+    tags: ['Fin de semana', 'Amigos']
   },
   {
-    name: 'Buenos Aires',
-    description: 'Shows, eventos, turismo urbano y traslados ejecutivos de alta demanda.',
+    id: 3,
+    title: 'Mendoza',
+    subtitle: 'Ruta del Vino y Montaña',
+    image: '/images/destinos/mendoza.jpg',
+    tags: ['5 días', 'Parejas']
   },
   {
-    name: 'Uruguay',
-    description: 'Destinos limítrofes para vacaciones y escapadas con asistencia personalizada.',
-  },
+    id: 4,
+    title: 'Patagonia Sur',
+    subtitle: 'Glaciares y lagos',
+    image: '/images/destinos/patagonia.jpg',
+    tags: ['10 días', 'Premium']
+  }
 ];
 
-export function DestinationsCarousel() {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      setActiveIndex((currentIndex) => (currentIndex + 1) % destinations.length);
-    }, 5500);
-
-    return () => window.clearInterval(interval);
-  }, []);
-
-  const current = destinations[activeIndex];
-
-  const goToPrevious = () => setActiveIndex((currentIndex) => (currentIndex - 1 + destinations.length) % destinations.length);
-  const goToNext = () => setActiveIndex((currentIndex) => (currentIndex + 1) % destinations.length);
-
-  const destinationMessage = encodeURIComponent(`Hola, quiero consultar un viaje a ${current.name} con Las Trafic De Alberto.`);
-
+export default function DestinationsCarousel() {
   return (
-    <section id="destinos" className="bg-white py-20 sm:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionReveal>
-          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#da0200]">Destinos</p>
-          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-            Un carrusel de destinos para inspirar tu próximo viaje.
-          </h2>
-          <p className="mt-5 max-w-2xl text-base leading-8 text-slate-600 sm:text-lg">
-            Cada tarjeta representa un destino distinto y lleva directo a WhatsApp con un mensaje preparado para resolver la consulta más rápido.
-          </p>
-        </SectionReveal>
-
-        <div className="mt-12 grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-          <SectionReveal className="flex items-center">
-            <div className="w-full rounded-[2.5rem] border border-[#e8e9ed] bg-[#e8e9ed]/35 p-4 shadow-sm">
-              <div className="relative min-h-[30rem] overflow-hidden rounded-[2rem]">
-                <motion.div
-                  key={current.name}
-                  initial={{ opacity: 0, scale: 1.05 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, ease: 'easeOut' }}
-                  className="absolute inset-0"
-                >
-                  <div
-                    className="h-full w-full bg-cover bg-center"
-                    style={{ backgroundImage: `url(${placeImage})` }}
-                    aria-label={current.name}
-                  />
-                </motion.div>
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.08),rgba(0,0,0,0.58))]" />
-
-                <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                  <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-medium backdrop-blur">
-                    <MapPinned className="h-4 w-4 text-[#da0200]" />
-                    Destino destacado
-                  </div>
-                  <h3 className="mt-4 text-3xl font-semibold">{current.name}</h3>
-                  <p className="mt-3 max-w-md text-sm leading-7 text-white/90">{current.description}</p>
-                  <Link
-                    href={`${whatsappBase}?text=${destinationMessage}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-6 inline-flex h-12 items-center justify-center rounded-full bg-[#da0200] px-5 text-sm font-semibold text-white shadow-lg shadow-[#da0200]/25 transition hover:opacity-90"
-                  >
-                    Más info
-                  </Link>
-                </div>
-
-                <button
-                  type="button"
-                  aria-label="Destino anterior"
-                  onClick={goToPrevious}
-                  className="absolute left-4 top-1/2 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur transition hover:bg-white/25"
-                >
-                  <ChevronLeft className="h-5 w-5" />
-                </button>
-                <button
-                  type="button"
-                  aria-label="Destino siguiente"
-                  onClick={goToNext}
-                  className="absolute right-4 top-1/2 inline-flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur transition hover:bg-white/25"
-                >
-                  <ChevronRight className="h-5 w-5" />
-                </button>
-              </div>
-            </div>
-          </SectionReveal>
-
-          <SectionReveal delay={0.1} className="flex items-center">
-            <div className="w-full">
-              <div className="grid gap-4 sm:grid-cols-2">
-                {destinations.map((destination, index) => {
-                  const message = encodeURIComponent(`Hola, quiero más info sobre el viaje a ${destination.name} con Las Trafic De Alberto.`);
-
-                  return (
-                    <motion.article
-                      key={destination.name}
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ duration: 0.2 }}
-                      className={`overflow-hidden rounded-[1.75rem] border bg-white shadow-sm transition ${index === activeIndex ? 'border-[#da0200]' : 'border-[#e8e9ed]'}`}
-                    >
-                      <div className="relative h-44 overflow-hidden">
-                        <div className="h-full w-full bg-cover bg-center" style={{ backgroundImage: `url(${placeImage})` }} aria-label={destination.name} />
-                        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.08),rgba(0,0,0,0.58))]" />
-                        <div className="absolute inset-0 flex items-end p-4 text-white">
-                          <div>
-                            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/75">Destino</p>
-                            <h3 className="mt-2 text-xl font-semibold">{destination.name}</h3>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="p-5">
-                        <p className="mt-2 text-sm leading-6 text-slate-600">{destination.description}</p>
-                        <Link
-                          href={`${whatsappBase}?text=${message}`}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="mt-5 inline-flex h-11 items-center justify-center rounded-full bg-[#da0200] px-4 text-sm font-semibold text-white transition hover:opacity-90"
-                        >
-                          Más info
-                        </Link>
-                      </div>
-                    </motion.article>
-                  );
-                })}
-              </div>
-            </div>
-          </SectionReveal>
+    <section className="w-full py-16 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-12 gap-4">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
+              Destinos Destacados
+            </h2>
+            <p className="text-slate-500 mt-2 max-w-2xl text-lg">
+              Mirá algunos de los viajes que armamos. Vos elegís el destino, nosotros nos encargamos de que el viaje sea inolvidable.
+            </p>
+          </div>
+          <button className="hidden md:flex items-center gap-2 text-[#da0200] font-semibold hover:opacity-80 transition-colors">
+            Ver todos los destinos <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
+
+        {/* 
+          Arquitectura Mobile: Scroll Snap Horizontal (Native CSS, 0 JS) 
+          Arquitectura Desktop: Grid de 4 columnas
+        */}
+        <div className="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 pb-8 md:pb-0 snap-x snap-mandatory hide-scrollbar -mx-4 px-4 md:mx-0 md:px-0">
+          
+          {DESTINOS.map((destino, index) => (
+            <motion.div
+              key={destino.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              className="relative min-w-[280px] md:min-w-0 h-[380px] rounded-2xl overflow-hidden group snap-center cursor-pointer isolate flex-shrink-0"
+            >
+              {/* Imagen optimizada de Next.js */}
+              <Image 
+                src={destino.image}
+                alt={`Viaje a ${destino.title}`}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105 z-0"
+                sizes="(max-width: 768px) 280px, 25vw"
+                priority={index < 2} // Priorizamos LCP en las dos primeras imágenes
+              />
+              
+              {/* Gradiente sutil para legibilidad del texto sin usar dark mode completo */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent z-10" />
+
+              <div className="absolute inset-0 p-6 flex flex-col justify-end z-20">
+                <div className="flex gap-2 mb-3">
+                  {destino.tags.map(tag => (
+                    <span key={tag} className="bg-white/20 backdrop-blur-md text-white text-xs font-semibold px-2 py-1 rounded-md">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-1">{destino.title}</h3>
+                <div className="flex items-center gap-2 text-slate-200 text-sm font-medium">
+                  <MapPin className="w-4 h-4 text-[#da0200]" />
+                  {destino.subtitle}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
       </div>
+
+      {/* Utilidad para ocultar la scrollbar nativa en navegadores webkit manteniendo la funcionalidad */}
+      <style dangerouslySetInnerHTML={{__html: `
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}} />
     </section>
   );
 }

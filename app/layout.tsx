@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: 'Las Trafic De Alberto',
   description: 'Alquiler de combis y traslados grupales con enfoque corporativo y familiar.',
   keywords: 'alquiler, combis, traslados, grupales, corporativo, familiar',
+  icons: {
+    icon: '/images/logo.jpg',
+  },
 };
 
 export default function RootLayout({

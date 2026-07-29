@@ -1,35 +1,56 @@
-import { Navbar } from '../components/Navbar';
-import { Hero } from '../components/Hero';
-import { MetricsBar } from '../components/MetricsBar';
-import { VacationSpotlight } from '../components/VacationSpotlight';
-import { DestinationsCarousel } from '../components/DestinationsCarousel';
-import { ServicesOverview } from '../components/ServicesOverview';
-import { AboutPreview } from '../components/AboutPreview';
-import { PaymentMethods } from '../components/PaymentMethods';
-import { Testimonials } from '../components/Testimonials';
+import { Navbar } from '@/components/Navbar';
+import { Hero } from '@/components/Hero';
+import DestinationsCarousel from '@/components/DestinationsCarousel';
+import SmartLeadGenerator from '@/components/SmartLeadGenerator';
+import ServicesOverview from '@/components/ServicesOverview';
+import ServiceSolutions from '@/components/ServiceSolutions';
+import { VacationSpotlight } from '@/components/VacationSpotlight';
+import { MetricsBar } from '@/components/MetricsBar';
+import { Testimonials } from '@/components/Testimonials';
+import { SectionReveal } from '@/components/SectionReveal';
 
-export default function Page() {
+export default function Home() {
   return (
-    <main className="min-h-screen bg-slate-50">
+    <main className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-[#e8e9ed] selection:text-slate-900">
       <Navbar />
       <Hero />
-      <MetricsBar />
-      <VacationSpotlight />
-      <ServicesOverview />
-      <DestinationsCarousel />
-      <AboutPreview />
-      <PaymentMethods />
-      <Testimonials />
+      
+      <SectionReveal>
+        <MetricsBar />
+      </SectionReveal>
 
-      <section id="cotizar" className="bg-white px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl rounded-[2rem] border border-[#e8e9ed] bg-[#e8e9ed]/35 px-6 py-10 sm:px-10 sm:py-12">
-          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#da0200]">WhatsApp</p>
-          <h2 className="mt-3 text-2xl font-semibold text-slate-900 sm:text-3xl">Las consultas se hacen por WhatsApp</h2>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
-            No vamos a usar lógica de cotización en la web. El botón principal deriva a WhatsApp para resolver el pedido de forma directa y simple.
-          </p>
-        </div>
-      </section>
+      {/* El carrusel optimizado va justo después del Hero para inspirar */}
+      <SectionReveal delay={0.1}>
+        <DestinationsCarousel />
+      </SectionReveal>
+
+      {/* El generador de leads intercepta la intención generada por los destinos */}
+      <div className="relative z-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto -mt-8 mb-16">
+        <SmartLeadGenerator />
+      </div>
+
+      <SectionReveal delay={0.2}>
+        <VacationSpotlight />
+      </SectionReveal>
+
+
+
+      {/* Auto-segmentación del usuario (Turismo, Eventos, Corporativo) */}
+      <SectionReveal>
+        <ServiceSolutions />
+      </SectionReveal>
+
+      <SectionReveal>
+        <ServicesOverview />
+      </SectionReveal>
+
+      {/* Explicación del Método para derribar objeciones previas al cierre */}
+
+
+
+      <SectionReveal>
+        <Testimonials />
+      </SectionReveal>
     </main>
   );
 }

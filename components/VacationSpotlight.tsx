@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { ChevronLeft, ChevronRight, PlaneTakeoff, ShieldCheck, Users2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
@@ -9,14 +10,17 @@ const travelerImages = [
   {
     title: 'Viaje familiar',
     subtitle: 'Vacaciones organizadas con todo el grupo en un solo vehículo.',
+    src: '/images/gente.jpg',
   },
   {
     title: 'Escapada con amigos',
     subtitle: 'Salida cómoda, ordenada y pensada para disfrutar desde el inicio.',
+    src: '/images/gente2.jpg',
   },
   {
     title: 'Experiencia de grupo',
     subtitle: 'Traslado coordinado con foco en confort y puntualidad.',
+    src: '/images/gente3.jpg',
   },
 ];
 
@@ -88,7 +92,8 @@ export function VacationSpotlight() {
                   transition={{ duration: 0.6, ease: 'easeOut' }}
                   className="absolute inset-0"
                 >
-                  <div className="flex h-full w-full items-end bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.22),_transparent_28%),linear-gradient(135deg,rgba(218,2,0,0.92),rgba(17,24,39,0.95))] p-8">
+                  <Image src={src.src} alt={src.title} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" priority={index === 0} />
+                  <div className="flex h-full w-full items-end bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(17,24,39,0.65))] p-8">
                     <div>
                       <p className="text-sm font-semibold uppercase tracking-[0.24em] text-white/80">{src.title}</p>
                       <p className="mt-3 max-w-md text-2xl font-semibold leading-tight text-white">{src.subtitle}</p>

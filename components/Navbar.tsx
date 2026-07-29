@@ -1,14 +1,33 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, PhoneCall } from 'lucide-react';
+import { Menu, PhoneCall, X } from 'lucide-react';
 import { useScrolled } from '../hooks/useScrolled';
 
 const whatsappHref = 'https://wa.me/5490000000000?text=Hola%20quiero%20cotizar%20un%20viaje%20con%20Las%20Trafic%20De%20Alberto';
 
+const navItems = [
+  { label: 'Inicio', href: '#top' },
+  { label: 'Vacaciones', href: '#vacaciones' },
+  { label: 'Servicios', href: '#servicios' },
+  { label: 'Destinos', href: '#destinos' },
+  { label: 'Nosotros', href: '#about' },
+  { label: 'Pagos', href: '#pagos' },
+  { label: 'Opiniones', href: '#opiniones' },
+];
+
 export function Navbar() {
   const scrolled = useScrolled();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const topTextClass = scrolled ? 'text-slate-600 hover:text-[#da0200]' : 'text-white/90 hover:text-white';
+  const topButtonClass = scrolled
+    ? 'inline-flex items-center gap-2 rounded-full bg-[#da0200] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#da0200]/25 transition hover:opacity-90'
+    : 'inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-black/10 backdrop-blur transition hover:bg-white/15';
+  const menuButtonClass = scrolled
+    ? 'inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#e8e9ed] bg-white text-slate-700 shadow-sm transition hover:border-[#da0200] md:hidden'
+    : 'inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white shadow-sm backdrop-blur transition hover:bg-white/15 md:hidden';
 
   return (
     <header
@@ -26,16 +45,12 @@ export function Navbar() {
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
-          <Link href="#about" className="text-sm font-medium text-slate-600 transition hover:text-[#da0200]">
-            Nosotros
-          </Link>
-          <Link href="#flota" className="text-sm font-medium text-slate-600 transition hover:text-[#da0200]">
-            Flota
-          </Link>
-          <Link href="#servicios" className="text-sm font-medium text-slate-600 transition hover:text-[#da0200]">
-            Servicios
-          </Link>
-          <Link href={whatsappHref} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[#da0200] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#da0200]/25 transition hover:opacity-90">
+          {navItems.map((item) => (
+            <Link key={item.label} href={item.href} className={`text-sm font-medium transition ${topTextClass}`}>
+              {item.label}
+            </Link>
+          ))}
+          <Link href={whatsappHref} target="_blank" rel="noreferrer" className={topButtonClass}>
             <PhoneCall className="h-4 w-4" />
             Cotizar
           </Link>
@@ -44,11 +59,43 @@ export function Navbar() {
         <button
           type="button"
           aria-label="Abrir menú"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#e8e9ed] bg-white text-slate-700 shadow-sm transition hover:border-[#da0200] md:hidden"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
+          onClick={() => setMenuOpen((current) => !current)}
+          className={menuButtonClass}
         >
-          <Menu className="h-5 w-5" />
+          {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </nav>
+
+      {menuOpen ? (
+        <div id="mobile-menu" className={`border-t ${scrolled ? 'border-[#e8e9ed] bg-white/98' : 'border-white/10 bg-slate-950/95'} md:hidden`}>
+          <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6">
+            <div className="grid gap-2 rounded-[1.75rem] border border-[#e8e9ed] bg-white p-4 shadow-lg shadow-black/5">
+              {navItems.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-[#e8e9ed] hover:text-[#da0200]"
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <Link
+                href={whatsappHref}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setMenuOpen(false)}
+                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-[#da0200] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#da0200]/25 transition hover:opacity-90"
+              >
+                <PhoneCall className="h-4 w-4" />
+                Cotizar por WhatsApp
+              </Link>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </header>
   );
 }

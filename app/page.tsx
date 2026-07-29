@@ -1,6 +1,8 @@
 import { Navbar } from '../components/Navbar';
 import { Hero } from '../components/Hero';
 import { MetricsBar } from '../components/MetricsBar';
+import { VacationSpotlight } from '../components/VacationSpotlight';
+import { DestinationsCarousel } from '../components/DestinationsCarousel';
 import { ServicesOverview } from '../components/ServicesOverview';
 import { AboutPreview } from '../components/AboutPreview';
 import { PaymentMethods } from '../components/PaymentMethods';
@@ -12,7 +14,9 @@ export default function Page() {
       <Navbar />
       <Hero />
       <MetricsBar />
+      <VacationSpotlight />
       <ServicesOverview />
+      <DestinationsCarousel />
       <AboutPreview />
       <PaymentMethods />
       <Testimonials />

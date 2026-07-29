@@ -24,7 +24,7 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="bg-white py-20 sm:py-24">
+    <section id="opiniones" className="bg-white py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionReveal>
           <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#da0200]">Opiniones</p>

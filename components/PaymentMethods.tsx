@@ -24,7 +24,7 @@ const methods = [
 
 export function PaymentMethods() {
   return (
-    <section className="bg-[#e8e9ed]/45 py-16 sm:py-20">
+    <section id="pagos" className="bg-[#e8e9ed]/45 py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionReveal>
           <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#da0200]">Facilidades de pago</p>

@@ -11,10 +11,10 @@ html {
 }
 
 body {
-  @apply bg-slate-50 text-slate-900 antialiased;
+  @apply bg-white text-slate-900 antialiased;
 }
 
 ::selection {
-  background: #dbeafe;
-  color: #0f172a;
+  background: #da0200;
+  color: #ffffff;
 }

@@ -11,6 +11,7 @@ import { LocationSection } from '@/components/LocationSection';
 import { Testimonials } from '@/components/Testimonials';
 import { SectionReveal } from '@/components/SectionReveal';
 import { Footer } from '@/components/Footer';
+import ConciergeCTA from '@/components/ConciergeCTA';
 
 export default function Home() {
   return (
@@ -49,6 +50,10 @@ export default function Home() {
 
       <SectionReveal>
         <ServicesOverview />
+      </SectionReveal>
+
+      <SectionReveal>
+        <ConciergeCTA />
       </SectionReveal>
 
       <SectionReveal>

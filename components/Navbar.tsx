@@ -14,7 +14,7 @@ const navItems = [
   { label: 'Destinos', href: '#destinos' },
   { label: 'Vacaciones', href: '#vacaciones' },
   { label: 'Soluciones', href: '#soluciones' },
-  { label: 'Servicios', href: '#servicios' },
+  { label: 'Servicios', href: '#soluciones' },
   { label: 'Ubicacion', href: '#ubicacion' },
   { label: 'Opiniones', href: '#opiniones' },
 ];

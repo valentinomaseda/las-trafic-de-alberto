@@ -14,7 +14,11 @@ import { Footer } from '@/components/Footer';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-[#e8e9ed] selection:text-slate-900">
+    <main className="relative isolate min-h-screen overflow-hidden bg-[radial-gradient(circle_at_top,_#ffffff_0%,_#f8fafc_34%,_#eef2f7_100%)] font-sans text-slate-900 selection:bg-[#e8e9ed] selection:text-slate-900">
+      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[32rem] bg-[radial-gradient(circle_at_top_left,_rgba(218,2,0,0.12),_transparent_55%),radial-gradient(circle_at_top_right,_rgba(148,163,184,0.18),_transparent_45%)]" />
+      <div className="pointer-events-none absolute left-1/2 top-[42rem] -z-10 h-72 w-72 -translate-x-1/2 rounded-full bg-[#da0200]/5 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-[20rem] right-0 -z-10 h-96 w-96 translate-x-1/3 rounded-full bg-slate-300/20 blur-3xl" />
+
       <Navbar />
       <Hero />
       

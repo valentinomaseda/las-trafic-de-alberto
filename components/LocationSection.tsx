@@ -19,7 +19,9 @@ const businessHours = [
 
 export function LocationSection() {
   return (
-    <section id="ubicacion" className="bg-slate-50 py-20 sm:py-24">
+    <section id="ubicacion" className="relative overflow-hidden bg-[linear-gradient(180deg,#f8fafc_0%,#ffffff_100%)] py-20 sm:py-24">
+      <div className="pointer-events-none absolute left-0 top-0 h-72 w-72 -translate-x-1/3 rounded-full bg-[#da0200]/5 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-0 right-0 h-80 w-80 translate-x-1/3 rounded-full bg-slate-200/40 blur-3xl" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionReveal>
           <div className="max-w-2xl">
@@ -34,7 +36,7 @@ export function LocationSection() {
         </SectionReveal>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-          <SectionReveal className="rounded-[2rem] border border-[#e8e9ed] bg-white p-6 shadow-sm sm:p-8">
+          <SectionReveal className="rounded-[2rem] border border-[#e8e9ed] bg-white/90 p-6 shadow-sm backdrop-blur sm:p-8">
             <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#e8e9ed] text-[#da0200]">
               <MapPin className="h-6 w-6" />
             </div>
@@ -84,7 +86,7 @@ export function LocationSection() {
             </Link>
           </SectionReveal>
 
-          <SectionReveal delay={0.1} className="overflow-hidden rounded-[2rem] border border-[#e8e9ed] bg-white shadow-sm">
+          <SectionReveal delay={0.1} className="overflow-hidden rounded-[2rem] border border-[#e8e9ed] bg-white/90 shadow-sm backdrop-blur">
             <div className="relative min-h-[420px] w-full lg:h-full">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.0646136293844!2d-60.1044911250716!3d-34.06785787315107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b99dc21867419d%3A0xe5d68ae1464094c4!2slas%20trafic%20de%20alberto!5e0!3m2!1ses-419!2sar!4v1785373981663!5m2!1ses-419!2sar"

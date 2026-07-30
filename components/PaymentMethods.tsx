@@ -43,10 +43,11 @@ const cardVariants: Variants = {
 
 export function PaymentMethods() {
   return (
-    <section id="pagos" className="w-full bg-white py-24 relative overflow-hidden">
+    <section id="pagos" className="w-full bg-[linear-gradient(180deg,#f8fafc_0%,#ffffff_65%,#f6f7f9_100%)] py-24 relative overflow-hidden">
       
       {/* Detalle decorativo minimalista de fondo */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-slate-50 rounded-full blur-3xl pointer-events-none opacity-50" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#da0200]/5 rounded-full blur-3xl pointer-events-none opacity-70" />
+      <div className="absolute bottom-0 right-0 h-72 w-72 translate-x-1/3 rounded-full bg-slate-200/40 blur-3xl pointer-events-none" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -57,7 +58,7 @@ export function PaymentMethods() {
           viewport={{ once: true, margin: "-50px" }}
           className="text-center max-w-2xl mx-auto mb-16"
         >
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-bold uppercase tracking-widest text-slate-500 shadow-sm">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-4 py-2 text-sm font-bold uppercase tracking-widest text-slate-500 shadow-sm backdrop-blur">
             <Lock className="h-4 w-4" style={{ color: BRAND_RED }} />
             Transparencia Total
           </div>
@@ -82,7 +83,7 @@ export function PaymentMethods() {
               key={title}
               variants={cardVariants}
               whileHover={{ y: -8 }}
-              className="group relative flex flex-col h-full rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm hover:shadow-2xl hover:shadow-[#da0200]/10 transition-all duration-300"
+              className="group relative flex flex-col h-full rounded-[2rem] border border-slate-200 bg-[linear-gradient(180deg,#ffffff_0%,#fbfbfc_100%)] p-8 shadow-sm hover:shadow-2xl hover:shadow-[#da0200]/10 transition-all duration-300"
             >
               {/* Borde de acento superior que se revela en hover para dar feedback interactivo */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-[#da0200] to-red-500 rounded-t-[2rem] group-hover:w-full transition-all duration-500 ease-out" />

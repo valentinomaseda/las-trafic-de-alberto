@@ -2,36 +2,38 @@
 
 import React from 'react';
 import { motion, type Variants } from 'framer-motion';
-import { Plane, Map, Music, Briefcase } from 'lucide-react';
+import { Plane, Map, Music, Briefcase, ArrowRight, CheckCircle2 } from 'lucide-react';
+
+const BRAND_RED = '#da0200';
 
 const SOLUCIONES = [
   {
     id: 'turismo',
     title: 'Turismo y Vacaciones',
-    description: 'Armamos la ruta perfecta para tu grupo. Olvidate de coordinar varios autos, peajes o el cansancio de manejar. El viaje empieza al subir.',
+    description: 'Armamos la ruta perfecta para tu grupo. Olvidate de coordinar varios autos, peajes o el cansancio de manejar.',
     icon: Map,
-    color: 'bg-[#e8e9ed] text-[#da0200]',
+    cta: 'Cotizar viaje',
   },
   {
     id: 'eventos',
     title: 'Eventos y Casamientos',
     description: 'Disfruten la fiesta sin preocupaciones. Llevamos a tus invitados y los traemos de vuelta seguros a la madrugada.',
     icon: Music,
-    color: 'bg-[#e8e9ed] text-[#da0200]',
+    cta: 'Cotizar traslados',
   },
   {
     id: 'aeropuertos',
     title: 'Traslados a Aeropuertos',
-    description: 'Puntualidad absoluta para Ezeiza o Aeroparque. Amplio espacio para valijas y la tranquilidad de llegar a tiempo a tu vuelo.',
+    description: 'Puntualidad absoluta para Ezeiza o Aeroparque. Amplio espacio para valijas y tranquilidad antes de tu vuelo.',
     icon: Plane,
-    color: 'bg-[#e8e9ed] text-[#da0200]',
+    cta: 'Reservar fecha',
   },
   {
     id: 'corporativo',
     title: 'Viajes Corporativos',
-    description: 'Traslados para empresas, convenciones o retiros de equipo. Unidades confortables ideales para mantener a tu equipo unido.',
+    description: 'Traslados para empresas, convenciones o retiros de equipo. Unidades ideales para mantener a tu equipo unido.',
     icon: Briefcase,
-    color: 'bg-[#e8e9ed] text-[#da0200]',
+    cta: 'Consultar logística',
   }
 ];
 
@@ -44,40 +46,58 @@ const containerVariants = {
 };
 
 const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30 },
   visible: { 
     opacity: 1, 
     y: 0,
-    transition: { type: 'spring', stiffness: 120, damping: 20 }
+    transition: { type: 'spring', stiffness: 100, damping: 20 }
   }
 };
 
 export default function ServiceSolutions() {
   return (
-    <section id="soluciones" className="w-full py-24 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="soluciones" className="w-full py-24 bg-slate-50 relative overflow-hidden">
+      
+      {/* Elemento decorativo de fondo sutil para romper la monotonía del gris */}
+      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-[#da0200]/5 blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
+        {/* Cabecera Editorial */}
         <div className="mb-16 md:w-2/3">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#da0200]/20 bg-[#da0200]/5 px-4 py-2 text-sm font-bold uppercase tracking-wide text-[#da0200]"
+          >
+            <CheckCircle2 className="h-4 w-4" />
+            Especialidades
+          </motion.div>
+
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight"
+            transition={{ delay: 0.1 }}
+            className="text-3xl md:text-5xl font-bold text-slate-900 tracking-tight leading-[1.15]"
           >
-            Soluciones para cada tipo de viaje
+            Soluciones logísticas para cada tipo de viaje
           </motion.h2>
+          
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ delay: 0.1 }}
-            className="mt-4 text-lg text-slate-600"
+            transition={{ delay: 0.2 }}
+            className="mt-6 text-lg leading-relaxed text-slate-600 max-w-2xl"
           >
-            No importa el motivo, adaptamos nuestra logística a la necesidad de tu grupo. 
+            No importa el motivo, adaptamos nuestra flota a la necesidad de tu grupo. 
             Elegí tu escenario y nosotros nos encargamos del camino.
           </motion.p>
         </div>
 
+        {/* Grid de Tarjetas Interactivas */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
@@ -87,26 +107,42 @@ export default function ServiceSolutions() {
         >
           {SOLUCIONES.map((solucion) => {
             const Icon = solucion.icon;
+            
+            // Reemplazar este href con la lógica real de WhatsApp (ej: abriendo modal o wa.me)
+            const whatsappLink = `https://wa.me/5490000000000?text=Hola,%20me%20interesa%20consultar%20por%20el%20servicio%20de%20${encodeURIComponent(solucion.title)}`;
+
             return (
-              <motion.div
+              <motion.a
+                href={whatsappLink}
+                target="_blank"
+                rel="noreferrer"
                 key={solucion.id}
                 variants={cardVariants}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                className="bg-white rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-xl hover:shadow-black/5 transition-all border border-[#e8e9ed] group flex flex-col h-full"
+                whileHover={{ y: -8 }}
+                className="group relative bg-white rounded-[2rem] p-8 shadow-sm hover:shadow-2xl hover:shadow-[#da0200]/10 transition-all duration-300 border border-slate-200 hover:border-[#da0200]/30 flex flex-col h-full overflow-hidden"
               >
-                <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110 ${solucion.color}`}>
-                  <Icon className="w-7 h-7" strokeWidth={1.5} />
+                {/* Acento superior sutil que aparece en hover */}
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#da0200] to-red-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out" />
+
+                {/* Contenedor del Icono refinado */}
+                <div className="w-14 h-14 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-8 transition-colors duration-300 group-hover:bg-red-50 group-hover:border-red-100">
+                  <Icon className="w-7 h-7 text-slate-700 transition-colors duration-300 group-hover:text-[#da0200]" strokeWidth={1.5} />
                 </div>
                 
-                <h3 className="text-xl font-bold text-slate-900 mb-3">
+                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#da0200] transition-colors duration-300">
                   {solucion.title}
                 </h3>
                 
-                <p className="text-slate-600 text-sm leading-relaxed flex-grow">
+                <p className="text-slate-600 text-sm leading-relaxed flex-grow mb-6">
                   {solucion.description}
                 </p>
                 
-              </motion.div>
+                {/* Micro-CTA interactivo */}
+                <div className="mt-auto flex items-center gap-2 text-sm font-semibold text-slate-900 transition-colors duration-300 group-hover:text-[#da0200]">
+                  {solucion.cta}
+                  <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+                </div>
+              </motion.a>
             );
           })}
         </motion.div>

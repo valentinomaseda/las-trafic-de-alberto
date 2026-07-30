@@ -15,6 +15,7 @@ const navItems = [
   { label: 'Vacaciones', href: '#vacaciones' },
   { label: 'Soluciones', href: '#soluciones' },
   { label: 'Servicios', href: '#servicios' },
+  { label: 'Ubicacion', href: '#ubicacion' },
   { label: 'Opiniones', href: '#opiniones' },
 ];
 

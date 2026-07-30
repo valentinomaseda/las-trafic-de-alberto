@@ -6,8 +6,11 @@ import ServicesOverview from '@/components/ServicesOverview';
 import ServiceSolutions from '@/components/ServiceSolutions';
 import { VacationSpotlight } from '@/components/VacationSpotlight';
 import { MetricsBar } from '@/components/MetricsBar';
+import { PaymentMethods } from '@/components/PaymentMethods';
+import { LocationSection } from '@/components/LocationSection';
 import { Testimonials } from '@/components/Testimonials';
 import { SectionReveal } from '@/components/SectionReveal';
+import { Footer } from '@/components/Footer';
 
 export default function Home() {
   return (
@@ -44,6 +47,14 @@ export default function Home() {
         <ServicesOverview />
       </SectionReveal>
 
+      <SectionReveal>
+        <PaymentMethods />
+      </SectionReveal>
+
+      <SectionReveal>
+        <LocationSection />
+      </SectionReveal>
+
       {/* Explicación del Método para derribar objeciones previas al cierre */}
 
 
@@ -51,6 +62,8 @@ export default function Home() {
       <SectionReveal>
         <Testimonials />
       </SectionReveal>
+
+      <Footer />
     </main>
   );
 }

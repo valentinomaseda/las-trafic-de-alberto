@@ -1,6 +1,7 @@
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
 import DestinationsCarousel from '@/components/DestinationsCarousel';
+import ShowsSection from '@/components/ShowsSection';
 import SmartLeadGenerator from '@/components/SmartLeadGenerator';
 import ServicesOverview from '@/components/ServicesOverview';
 import ServiceSolutions from '@/components/ServiceSolutions';
@@ -27,7 +28,7 @@ export default function Home() {
         <MetricsBar />
       </SectionReveal>
 
-      {/* El carrusel optimizado va justo después del Hero para inspirar */}
+      {/* El carrusel de destinos turísticos */}
       <SectionReveal delay={0.1}>
         <DestinationsCarousel />
       </SectionReveal>
@@ -37,11 +38,12 @@ export default function Home() {
         <SmartLeadGenerator />
       </div>
 
+      {/* Sección de Shows & Recitales — se muestra solo si hay shows cargados */}
+      <ShowsSection />
+
       <SectionReveal delay={0.2}>
         <VacationSpotlight />
       </SectionReveal>
-
-
 
       {/* Auto-segmentación del usuario (Turismo, Eventos, Corporativo) */}
       <SectionReveal>
@@ -63,10 +65,6 @@ export default function Home() {
       <SectionReveal>
         <LocationSection />
       </SectionReveal>
-
-      {/* Explicación del Método para derribar objeciones previas al cierre */}
-
-
 
       <SectionReveal>
         <Testimonials />

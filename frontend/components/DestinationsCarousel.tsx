@@ -65,10 +65,10 @@ export default function DestinationsCarousel() {
             </p>
           </div>
 
-          <button className="group hidden md:flex items-center gap-2 font-semibold transition-all hover:opacity-80" style={{ color: BRAND_RED }}>
+          <Link href="/paquetes" className="group hidden md:flex items-center gap-2 font-semibold transition-all hover:opacity-80" style={{ color: BRAND_RED }}>
             Ver galería completa
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-          </button>
+          </Link>
         </div>
 
         {/* Contenedor de tarjetas */}

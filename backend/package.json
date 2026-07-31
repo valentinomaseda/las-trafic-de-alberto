@@ -2,6 +2,9 @@
   "name": "las-trafic-backend",
   "version": "1.0.0",
   "description": "Backend API para Las Trafic De Alberto",
+  "engines": {
+    "node": ">=22"
+  },
   "main": "dist/index.js",
   "scripts": {
     "dev": "nodemon --exec ts-node src/index.ts",

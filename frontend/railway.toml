@@ -4,6 +4,9 @@ builder = "NIXPACKS"
 buildCommand = "npm install && npm run build"
 watchPatterns = ["frontend/**"]
 
+[build.env]
+NIXPACKS_NODE_VERSION = "22"
+
 [deploy]
 startCommand = "npm start"
 restartPolicyType = "ON_FAILURE"

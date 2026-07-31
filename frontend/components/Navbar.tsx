@@ -11,11 +11,12 @@ const whatsappHref = 'https://wa.me/5492478505684?text=Hola%20quiero%20cotizar%2
 
 const navItems = [
   { label: 'Inicio', href: '#top' },
+  { label: 'Nosotros', href: '#nosotros' },
   { label: 'Destinos', href: '#destinos' },
   { label: 'Shows', href: '#shows' },
   { label: 'Vacaciones', href: '#vacaciones' },
   { label: 'Soluciones', href: '#soluciones' },
-  { label: 'Servicios', href: '#soluciones' },
+  { label: 'Servicios', href: '#flota' },
   { label: 'Ubicacion', href: '#ubicacion' },
   { label: 'Opiniones', href: '#opiniones' },
 ];

@@ -7,6 +7,7 @@ import ServicesOverview from '@/components/ServicesOverview';
 import ServiceSolutions from '@/components/ServiceSolutions';
 import { VacationSpotlight } from '@/components/VacationSpotlight';
 import { MetricsBar } from '@/components/MetricsBar';
+import { AboutPreview } from '@/components/AboutPreview';
 import { PaymentMethods } from '@/components/PaymentMethods';
 import { LocationSection } from '@/components/LocationSection';
 import { Testimonials } from '@/components/Testimonials';
@@ -23,7 +24,12 @@ export default function Home() {
 
       <Navbar />
       <Hero />
-      
+
+      {/* Sobre nosotros — trayectoria y reconocimiento en Arrecifes */}
+      <SectionReveal delay={0.1}>
+        <AboutPreview />
+      </SectionReveal>
+
       <SectionReveal>
         <MetricsBar />
       </SectionReveal>

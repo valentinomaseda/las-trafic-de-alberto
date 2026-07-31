@@ -25,6 +25,11 @@ export default function Home() {
       <Navbar />
       <Hero />
 
+      {/* El carrusel de destinos turísticos */}
+      <SectionReveal delay={0.1}>
+        <DestinationsCarousel />
+      </SectionReveal>
+
       {/* Sobre nosotros — trayectoria y reconocimiento en Arrecifes */}
       <SectionReveal delay={0.1}>
         <AboutPreview />
@@ -34,13 +39,8 @@ export default function Home() {
         <MetricsBar />
       </SectionReveal>
 
-      {/* El carrusel de destinos turísticos */}
-      <SectionReveal delay={0.1}>
-        <DestinationsCarousel />
-      </SectionReveal>
-
       {/* El generador de leads intercepta la intención generada por los destinos */}
-      <div className="relative z-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto -mt-8 mb-16">
+      <div id="cotizador" className="relative z-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto -mt-8 mb-16">
         <SmartLeadGenerator />
       </div>
 

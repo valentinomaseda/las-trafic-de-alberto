@@ -83,10 +83,10 @@ export function PaymentMethods() {
               key={title}
               variants={cardVariants}
               whileHover={{ y: -8 }}
-              className="group relative flex flex-col h-full rounded-[2rem] border border-slate-200 bg-[linear-gradient(180deg,#ffffff_0%,#fbfbfc_100%)] p-8 shadow-sm hover:shadow-2xl hover:shadow-[#da0200]/10 transition-all duration-300"
+              className="group relative flex flex-col h-full overflow-hidden rounded-[2rem] border border-slate-200 bg-[linear-gradient(180deg,#ffffff_0%,#fbfbfc_100%)] p-8 shadow-sm hover:shadow-2xl hover:shadow-[#da0200]/10 transition-all duration-300"
             >
-              {/* Borde de acento superior que se revela en hover para dar feedback interactivo */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-[#da0200] to-red-500 rounded-t-[2rem] group-hover:w-full transition-all duration-500 ease-out" />
+              {/* Borde de acento superior que se revela en hover */}
+              <div className="absolute top-0 left-0 h-1 w-0 bg-gradient-to-r from-[#da0200] to-red-500 group-hover:w-full transition-all duration-500 ease-out" />
 
               <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-50 border border-slate-100 transition-colors duration-300 group-hover:bg-red-50 group-hover:border-red-100">
                 <Icon className="h-7 w-7 text-slate-600 transition-colors duration-300 group-hover:text-[#da0200]" strokeWidth={1.5} />

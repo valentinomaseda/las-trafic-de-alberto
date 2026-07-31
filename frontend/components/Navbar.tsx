@@ -11,8 +11,8 @@ const whatsappHref = 'https://wa.me/5492478505684?text=Hola%20quiero%20cotizar%2
 
 const navItems = [
   { label: 'Inicio', href: '#top' },
-  { label: 'Nosotros', href: '#nosotros' },
   { label: 'Destinos', href: '#destinos' },
+  { label: 'Nosotros', href: '#nosotros' },
   { label: 'Shows', href: '#shows' },
   { label: 'Vacaciones', href: '#vacaciones' },
   { label: 'Soluciones', href: '#soluciones' },
@@ -34,14 +34,13 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
-        scrolled
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${scrolled
           ? 'border-[#e8e9ed] bg-white/95 shadow-sm backdrop-blur'
           : 'border-transparent bg-transparent'
-      }`}
+        }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Link href="#top" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3">
           <span className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-lg shadow-[#da0200]/10 ring-1 ring-[#e8e9ed]">
             <Image src="/images/logo.jpg" alt="Las Trafic De Alberto" width={55} height={55} className="h-full w-full object-cover" priority />
           </span>

@@ -46,23 +46,34 @@ export function Hero() {
               Desde escapadas familiares hasta logística corporativa. Flota moderna, choferes expertos y un servicio que empieza con un simple mensaje.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-10">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 mb-10">
+              {/* CTA 1: WhatsApp directo */}
               <Link
                 href={whatsappHref}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex h-14 items-center justify-center gap-2 rounded-xl px-8 text-base font-semibold text-white shadow-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex h-14 items-center justify-center gap-2 rounded-xl px-7 text-base font-semibold text-white shadow-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
                 style={{ backgroundColor: BRAND_RED, boxShadow: `0 10px 25px -5px ${BRAND_RED}50` }}
               >
-                Cotizar viaje por WhatsApp
+                Cotizar viaje
                 <ArrowRight className="h-5 w-5" />
               </Link>
-              <Link
-                href="#flota"
-                className="inline-flex h-14 items-center justify-center rounded-xl border border-white/30 bg-white/5 px-8 text-base font-semibold text-white backdrop-blur-md transition-colors hover:bg-white/10"
+
+              {/* CTA 2: Scroll al formulario inteligente */}
+              <a
+                href="#cotizador"
+                className="inline-flex h-14 items-center justify-center rounded-xl border border-white/30 bg-white/5 px-7 text-base font-semibold text-white backdrop-blur-md transition-colors hover:bg-white/10"
               >
-                Ver nuestra flota
-              </Link>
+                Cotizá tu viaje a medida
+              </a>
+
+              {/* CTA 3: Traslado a shows */}
+              <a
+                href="#shows"
+                className="inline-flex h-14 items-center justify-center rounded-xl border border-white/20 bg-white/5 px-7 text-base font-semibold text-white backdrop-blur-md transition-colors hover:bg-white/10"
+              >
+                Traslado a shows
+              </a>
             </div>
 
             {/* Micro-beneficios con acentos en rojo */}

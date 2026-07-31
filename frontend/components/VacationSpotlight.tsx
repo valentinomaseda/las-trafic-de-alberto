@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight, PlaneTakeoff, ShieldCheck, Map, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { SectionReveal } from './SectionReveal';
 
 const travelerImages = [
@@ -28,18 +28,17 @@ const BRAND_RED = '#da0200';
 
 export function VacationSpotlight() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false); // Para pausar el slider
-  const [direction, setDirection] = useState(0); // Para saber hacia dónde animar
+  const [isHovered, setIsHovered] = useState(false);
+  const [direction, setDirection] = useState(0);
+  const touchStartX = useRef<number | null>(null);
 
   // Auto-play inteligente: se pausa si el usuario interactúa
   useEffect(() => {
     if (isHovered) return;
-    
     const interval = window.setInterval(() => {
       setDirection(1);
       setActiveIndex((current) => (current + 1) % travelerImages.length);
-    }, 6000); // 6 segundos es más respetuoso con el tiempo de lectura
-
+    }, 6000);
     return () => window.clearInterval(interval);
   }, [isHovered]);
 
@@ -47,6 +46,19 @@ export function VacationSpotlight() {
     setDirection(newDirection);
     setActiveIndex((current) => (current + newDirection + travelerImages.length) % travelerImages.length);
   }, []);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    setIsHovered(true);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const delta = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(delta) > 40) paginate(delta > 0 ? 1 : -1);
+    touchStartX.current = null;
+    setIsHovered(false);
+  };
 
   // Variantes de Framer Motion para un slide físico direccional
   const variants: Variants = {
@@ -72,7 +84,7 @@ export function VacationSpotlight() {
   return (
     <section id="vacaciones" className="bg-slate-50 py-24">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8 items-center">
-        
+
         {/* Columna Izquierda: Copy Editorial */}
         <SectionReveal className="flex flex-col justify-center">
           <div className="max-w-xl">
@@ -111,22 +123,18 @@ export function VacationSpotlight() {
                 </article>
               ))}
             </div>
-            
-            <button className="group inline-flex items-center gap-2 font-semibold text-[#da0200] hover:text-red-700 transition-colors">
-              Conocé cómo trabajamos 
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </button>
+
           </div>
         </SectionReveal>
 
         {/* Columna Derecha: Slider Interactivo Elegante */}
         <SectionReveal delay={0.2} className="relative w-full">
-          <div 
-            className="relative h-[500px] sm:h-[600px] w-full overflow-hidden rounded-[2rem] shadow-2xl shadow-slate-200"
+          <div
+            className="relative h-[500px] sm:h-[600px] w-full overflow-hidden rounded-[2rem] shadow-2xl shadow-slate-200 group"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            onTouchStart={() => setIsHovered(true)}
-            onTouchEnd={() => setIsHovered(false)}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
           >
             <AnimatePresence initial={false} custom={direction} mode="popLayout">
               <motion.div
@@ -139,14 +147,14 @@ export function VacationSpotlight() {
                 className="absolute inset-0"
               >
                 {/* Removido el priority={index === 0} para proteger el LCP del Hero */}
-                <Image 
-                  src={travelerImages[activeIndex].src} 
-                  alt={travelerImages[activeIndex].title} 
-                  fill 
-                  className="object-cover" 
-                  sizes="(max-width: 1024px) 100vw, 50vw" 
+                <Image
+                  src={travelerImages[activeIndex].src}
+                  alt={travelerImages[activeIndex].title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
-                
+
                 {/* Gradiente limpio para proteger la lectura del texto */}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/30 to-transparent" />
 
@@ -162,19 +170,19 @@ export function VacationSpotlight() {
               </motion.div>
             </AnimatePresence>
 
-            {/* Controles de Navegación (Refinados) */}
-            <div className="absolute top-1/2 -translate-y-1/2 left-4 right-4 flex justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300 sm:opacity-100 z-10 pointer-events-none">
+            {/* Controles de Navegación — siempre visibles en mobile, fade en desktop al hacer hover */}
+            <div className="absolute top-1/2 -translate-y-1/2 left-4 right-4 flex justify-between z-10 md:opacity-0 md:group-hover:opacity-100 md:transition-opacity md:duration-300">
               <button
                 aria-label="Anterior"
                 onClick={() => paginate(-1)}
-                className="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md border border-white/20 transition-all hover:bg-white hover:text-slate-900 hover:scale-105 active:scale-95"
+                className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md border border-white/20 transition-all hover:bg-white hover:text-slate-900 hover:scale-105 active:scale-95"
               >
                 <ChevronLeft className="h-6 w-6" />
               </button>
               <button
                 aria-label="Siguiente"
                 onClick={() => paginate(1)}
-                className="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md border border-white/20 transition-all hover:bg-white hover:text-slate-900 hover:scale-105 active:scale-95"
+                className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md border border-white/20 transition-all hover:bg-white hover:text-slate-900 hover:scale-105 active:scale-95"
               >
                 <ChevronRight className="h-6 w-6" />
               </button>
@@ -190,9 +198,8 @@ export function VacationSpotlight() {
                     setDirection(index > activeIndex ? 1 : -1);
                     setActiveIndex(index);
                   }}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    index === activeIndex ? 'w-8 bg-[#da0200]' : 'w-2 bg-white/50 hover:bg-white/80'
-                  }`}
+                  className={`h-2 rounded-full transition-all duration-300 ${index === activeIndex ? 'w-8 bg-[#da0200]' : 'w-2 bg-white/50 hover:bg-white/80'
+                    }`}
                 />
               ))}
             </div>

@@ -10,6 +10,7 @@ import {
   Compass,
   Search,
   ChevronLeft,
+  ChevronRight,
   SlidersHorizontal,
   X,
 } from 'lucide-react';
@@ -19,6 +20,7 @@ import { supabase, type Package } from '@/lib/supabase';
 
 const BRAND_RED = '#da0200';
 const WHATSAPP_NUMBER = '5492478505684';
+const PAGE_SIZE = 12;
 
 function buildWhatsappHref(pkg: Package) {
   const tags = pkg.tags || [];
@@ -120,11 +122,62 @@ function PackageCard({ pkg, index }: { pkg: Package; index: number }) {
   );
 }
 
+function Pagination({
+  page,
+  totalPages,
+  onPage,
+}: {
+  page: number;
+  totalPages: number;
+  onPage: (p: number) => void;
+}) {
+  if (totalPages <= 1) return null;
+  return (
+    <div className="flex items-center justify-center gap-2 mt-12">
+      <button
+        onClick={() => onPage(page - 1)}
+        disabled={page === 1}
+        className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-600 hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+      >
+        <ChevronLeft className="w-4 h-4" />
+      </button>
+
+      {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+        <button
+          key={p}
+          onClick={() => onPage(p)}
+          className={`h-10 w-10 rounded-full text-sm font-semibold transition-all ${
+            p === page
+              ? 'text-white'
+              : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100'
+          }`}
+          style={p === page ? { backgroundColor: BRAND_RED } : {}}
+        >
+          {p}
+        </button>
+      ))}
+
+      <button
+        onClick={() => onPage(page + 1)}
+        disabled={page === totalPages}
+        className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-600 hover:bg-slate-100 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+      >
+        <ChevronRight className="w-4 h-4" />
+      </button>
+    </div>
+  );
+}
+
 export default function PaquetesPage() {
   const [packages, setPackages] = useState<Package[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [activeTag, setActiveTag] = useState<string | null>(null);
+  const [page, setPage] = useState(1);
+
+  // Reset página al cambiar filtros
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { setPage(1); }, [search, activeTag]);
 
   useEffect(() => {
     supabase
@@ -156,6 +209,10 @@ export default function PaquetesPage() {
       return matchSearch && matchTag;
     });
   }, [packages, search, activeTag]);
+
+  const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
+  const paginated = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+  const goToPage = (p: number) => { setPage(p); window.scrollTo({ top: 0, behavior: 'smooth' }); };
 
   return (
     <main className="min-h-screen bg-slate-50 font-sans text-slate-900">
@@ -281,16 +338,20 @@ export default function PaquetesPage() {
             </button>
           </div>
         ) : (
-          <motion.div
-            layout
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            <AnimatePresence mode="popLayout">
-              {filtered.map((pkg, index) => (
-                <PackageCard key={pkg.id} pkg={pkg} index={index} />
-              ))}
-            </AnimatePresence>
-          </motion.div>
+          <>
+            <motion.div
+              layout
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+              <AnimatePresence mode="popLayout">
+                {paginated.map((pkg, index) => (
+                  <PackageCard key={pkg.id} pkg={pkg} index={index} />
+                ))}
+              </AnimatePresence>
+            </motion.div>
+
+            <Pagination page={page} totalPages={totalPages} onPage={goToPage} />
+          </>
         )}
       </section>
 

@@ -40,6 +40,7 @@ export default function DestinationsCarousel() {
       .select('id, title, subtitle, image_url, tags')
       .eq('is_active', true)
       .order('created_at', { ascending: true })
+      .limit(4)
       .then(({ data }) => {
         setPackages((data as Package[]) || []);
         setLoading(false);

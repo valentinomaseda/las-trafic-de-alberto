@@ -147,7 +147,7 @@ export default function ShowsSection() {
   if (!loading && shows.length === 0) return null;
 
   return (
-    <section id="shows" className="w-full py-20 bg-zinc-950 overflow-hidden relative">
+    <section id="shows" className="w-full py-20 bg-zinc-950 relative">
       {/* Decoraciones de fondo */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(218,2,0,0.07),_transparent_55%)]" />
       <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
@@ -177,17 +177,17 @@ export default function ShowsSection() {
           </Link>
         </div>
 
-        {/* Mobile: carrusel horizontal */}
+        {/* Mobile: carrusel horizontal — desborda intencionalmente para mostrar peek de la siguiente card */}
         {loading ? (
-          <div className="flex md:hidden overflow-x-auto gap-4 pb-4 -mx-4 px-4 snap-x snap-mandatory hide-scrollbar">
+          <div className="flex md:hidden overflow-x-auto gap-4 pb-6 -mx-4 sm:-mx-6 px-4 sm:px-6 snap-x snap-mandatory hide-scrollbar">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="w-[85vw] max-w-[320px] flex-shrink-0 h-[380px] rounded-3xl bg-zinc-900 animate-pulse ring-1 ring-white/5 snap-center" />
+              <div key={i} className="w-[78vw] max-w-[310px] flex-shrink-0 h-[380px] rounded-3xl bg-zinc-900 animate-pulse ring-1 ring-white/5 snap-start" />
             ))}
           </div>
         ) : (
-          <div className="flex md:hidden overflow-x-auto gap-4 pb-4 -mx-4 px-4 snap-x snap-mandatory hide-scrollbar">
+          <div className="flex md:hidden overflow-x-auto gap-4 pb-6 -mx-4 sm:-mx-6 px-4 sm:px-6 snap-x snap-mandatory hide-scrollbar">
             {shows.map((show, index) => (
-              <div key={show.id} className="w-[85vw] max-w-[320px] flex-shrink-0 snap-center">
+              <div key={show.id} className="w-[78vw] max-w-[310px] flex-shrink-0 snap-start">
                 <ShowCard show={show} index={index} />
               </div>
             ))}

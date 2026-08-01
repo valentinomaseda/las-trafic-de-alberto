@@ -16,9 +16,8 @@ const quickLinks = [
 ];
 
 const hours = [
-  'Lunes a viernes: 9 a.m.–9 p.m.',
-  'Sabado: 9 a.m.–8 p.m.',
-  'Domingo: Cerrado',
+  'Lunes a sábado: 8:30–13:00 y 16:00–21:00',
+  'Domingo: Solo WhatsApp',
 ];
 
 export function Footer() {

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion, type Variants } from 'framer-motion';
-import { Plane, Map, Music, Briefcase, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Plane, Map, Music, Briefcase, GraduationCap, CalendarClock, Package, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const BRAND_RED = '#da0200';
 
@@ -34,7 +34,28 @@ const SOLUCIONES = [
     description: 'Traslados para empresas, convenciones o retiros de equipo. Unidades ideales para mantener a tu equipo unido.',
     icon: Briefcase,
     cta: 'Consultar logística',
-  }
+  },
+  {
+    id: 'educativos',
+    title: 'Viajes Educativos',
+    description: 'Excursiones escolares y salidas didácticas con la seguridad y el cuidado que los estudiantes merecen.',
+    icon: GraduationCap,
+    cta: 'Consultar viaje escolar',
+  },
+  {
+    id: 'bsas-fijos',
+    title: 'Viajes Fijos a Bs. As.',
+    description: 'Servicio regular de lunes a viernes hacia Buenos Aires. Reservá tu lugar y viajá sin preocupaciones, todos los días.',
+    icon: CalendarClock,
+    cta: 'Ver horarios y reservar',
+  },
+  {
+    id: 'encomiendas',
+    title: 'Encomiendas',
+    description: 'Envío y recepción de paquetes y envíos entre Arrecifes y Buenos Aires. Rápido, seguro y con seguimiento.',
+    icon: Package,
+    cta: 'Enviar encomienda',
+  },
 ];
 
 const containerVariants = {
@@ -103,7 +124,7 @@ export default function ServiceSolutions() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
         >
           {SOLUCIONES.map((solucion) => {
             const Icon = solucion.icon;

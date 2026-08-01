@@ -8,7 +8,7 @@ import { SectionReveal } from './SectionReveal';
 const metrics = [
   {
     icon: ShieldCheck,
-    value: 10,
+    value: 40,
     prefix: '+',
     label: 'Años de experiencia',
   },

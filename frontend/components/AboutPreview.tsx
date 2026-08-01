@@ -65,7 +65,7 @@ export function AboutPreview() {
               </div>
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.15] mb-6">
-                Más de una década <span style={{ color: BRAND_RED }}>moviéndose con Arrecifes</span>
+                Más de 40 años <span style={{ color: BRAND_RED }}>moviéndose con Arrecifes</span>
               </h2>
 
               <p className="text-lg text-slate-600 leading-relaxed max-w-lg">

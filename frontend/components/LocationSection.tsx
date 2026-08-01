@@ -8,13 +8,13 @@ const WHATSAPP_NUMBER = '5492478505684';
 const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Alberto, quiero consultar por la ubicacion de la oficina y coordinar una visita.')}`;
 
 const businessHours = [
-  { day: 'miércoles', hours: '9 a.m.–9 p.m.' },
-  { day: 'jueves', hours: '9 a.m.–9 p.m.' },
-  { day: 'viernes', hours: '9 a.m.–9 p.m.' },
-  { day: 'sábado', hours: '9 a.m.–8 p.m.' },
-  { day: 'domingo', hours: 'Cerrado' },
-  { day: 'lunes', hours: '9 a.m.–9 p.m.' },
-  { day: 'martes', hours: '9 a.m.–9 p.m.' },
+  { day: 'Lunes',    hours: '8:30–13:00 y 16:00–21:00' },
+  { day: 'Martes',   hours: '8:30–13:00 y 16:00–21:00' },
+  { day: 'Miércoles',hours: '8:30–13:00 y 16:00–21:00' },
+  { day: 'Jueves',   hours: '8:30–13:00 y 16:00–21:00' },
+  { day: 'Viernes',  hours: '8:30–13:00 y 16:00–21:00' },
+  { day: 'Sábado',   hours: '8:30–13:00 y 16:00–21:00' },
+  { day: 'Domingo',  hours: 'Solo WhatsApp' },
 ];
 
 export function LocationSection() {

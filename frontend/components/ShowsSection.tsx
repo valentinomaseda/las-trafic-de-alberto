@@ -21,9 +21,9 @@ function buildWhatsappHref(show: Show): string {
   const mensaje = [
     'Hola Alberto, quiero consultar traslado para un show.',
     `Show: ${show.title}`,
-    `Venue: ${show.venue}`,
+    `Lugar: ${show.venue}`,
     `Fecha: ${date}`,
-    'Tenes lugares disponibles y cual seria el precio? Gracias.',
+    '¿Tenés lugares disponibles y cuál sería el precio? Gracias.',
   ].join('\n');
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;
 }

@@ -281,7 +281,7 @@ export default function ShowsManager() {
             <thead>
               <tr className="bg-slate-800/80 text-slate-400 text-left">
                 <th className="px-4 py-3.5 font-semibold rounded-tl-2xl">Show</th>
-                <th className="px-4 py-3.5 font-semibold">Venue</th>
+                <th className="px-4 py-3.5 font-semibold">Lugar / Estadio</th>
                 <th className="px-4 py-3.5 font-semibold">Fecha</th>
                 <th className="px-4 py-3.5 font-semibold">Estado</th>
                 <th className="px-4 py-3.5 font-semibold rounded-tr-2xl text-right">Acciones</th>
@@ -404,7 +404,7 @@ export default function ShowsManager() {
 
                   {/* Venue */}
                   <div>
-                    <label className="block text-sm font-semibold text-slate-300 mb-1.5">Venue / Estadio *</label>
+                    <label className="block text-sm font-semibold text-slate-300 mb-1.5">Lugar / Estadio *</label>
                     <input
                       type="text"
                       value={form.venue}

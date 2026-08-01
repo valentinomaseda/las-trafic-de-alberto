@@ -102,7 +102,7 @@ export function AboutPreview() {
           >
             {/* INSTRUCCIÓN: Reemplazar el src con una foto real de Alberto o la Flota */}
             <Image
-              src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80"
+              src="/images/trafics/trafic2.jpeg"
               alt="Las Trafic De Alberto en Arrecifes"
               fill
               className="object-cover rounded-[2.5rem]"

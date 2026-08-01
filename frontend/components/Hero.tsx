@@ -6,7 +6,7 @@ import { ArrowRight, ShieldCheck, Users2, MapPin, CheckCircle2 } from 'lucide-re
 import { motion } from 'framer-motion';
 import { SectionReveal } from './SectionReveal';
 
-const whatsappHref = 'https://wa.me/5492478505684?text=Hola%20quiero%20cotizar%20un%20viaje%20con%20Las%20Trafic%20De%20Alberto';
+const whatsappHref = 'https://wa.me/5492478505684?text=Hola%20Alberto%2C%20quiero%20cotizar%20un%20viaje%20con%20Las%20Trafic%20De%20Alberto';
 const BRAND_RED = '#da0200';
 
 export function Hero() {

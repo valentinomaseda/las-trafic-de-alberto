@@ -63,11 +63,10 @@ function Pagination({
         <button
           key={p}
           onClick={() => onPage(p)}
-          className={`h-10 w-10 rounded-full text-sm font-semibold transition-all ${
-            p === page
+          className={`h-10 w-10 rounded-full text-sm font-semibold transition-all ${p === page
               ? 'text-white'
               : 'text-zinc-400 hover:text-white hover:bg-white/10'
-          }`}
+            }`}
           style={p === page ? { backgroundColor: BRAND_RED } : {}}
         >
           {p}
@@ -165,7 +164,7 @@ export default function ShowsPage() {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500 pointer-events-none" />
             <input
               type="text"
-              placeholder="Buscar show o venue…"
+              placeholder="Buscar show o evento"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="w-full pl-9 pr-4 py-2 text-sm rounded-xl border border-white/10 bg-zinc-800 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:border-transparent transition"
@@ -186,9 +185,8 @@ export default function ShowsPage() {
             <SlidersHorizontal className="w-4 h-4 text-zinc-500 flex-shrink-0" />
             <button
               onClick={() => setActiveStatus(null)}
-              className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
-                !activeStatus ? 'text-white shadow-sm' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
-              }`}
+              className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${!activeStatus ? 'text-white shadow-sm' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+                }`}
               style={!activeStatus ? { backgroundColor: BRAND_RED } : {}}
             >
               Todos
@@ -197,9 +195,8 @@ export default function ShowsPage() {
               <button
                 key={key}
                 onClick={() => setActiveStatus(activeStatus === key ? null : key)}
-                className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
-                  activeStatus === key ? 'text-white shadow-sm' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
-                }`}
+                className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${activeStatus === key ? 'text-white shadow-sm' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+                  }`}
                 style={activeStatus === key ? { backgroundColor: BRAND_RED } : {}}
               >
                 {label}

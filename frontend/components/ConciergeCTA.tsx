@@ -6,7 +6,7 @@ import { PhoneCall, ArrowRight, Wrench, Route, Headset } from 'lucide-react';
 import { SectionReveal } from './SectionReveal';
 
 const BRAND_RED = '#da0200';
-const WHATSAPP_URL = 'https://wa.me/5490000000000?text=Hola%20Alberto,%20tengo%20una%20consulta%20especial%20sobre%20un%20viaje.';
+const WHATSAPP_URL = 'https://wa.me/5492478505684?text=Hola%20Alberto%2C%20tengo%20una%20consulta%20especial%20sobre%20un%20viaje.';
 
 const GARANTIAS = [
   { 

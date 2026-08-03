@@ -2,17 +2,17 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { PhoneCall, MapPin, Clock3, ArrowUpRight } from 'lucide-react';
+import { PhoneCall, MapPin, Clock3, ArrowUpRight, Mail } from 'lucide-react';
 
 const WHATSAPP_NUMBER = '5492478505684';
 const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Alberto, quiero pedir informacion y coordinar un viaje.')}`;
 
 const quickLinks = [
   { label: 'Inicio', href: '#top' },
-  { label: 'Destinos', href: '#destinos' },
-  { label: 'Vacaciones', href: '#vacaciones' },
-  { label: 'Ubicacion', href: '#ubicacion' },
-  { label: 'Opiniones', href: '#opiniones' },
+  { label: 'Nuestra Flota', href: '#flota' },
+  { label: 'Servicios', href: '#servicios' },
+  { label: 'Shows y Espectáculos', href: '/shows' },
+  { label: 'Opiniones', href: '#testimonios' },
 ];
 
 const hours = [
@@ -69,6 +69,15 @@ export function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#da0200]" />
                 <span>Frascheri 563, B2740 Arrecifes, Provincia de Buenos Aires</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#da0200]" />
+                <a
+                  href="mailto:Albertoramosturismo@hotmail.com"
+                  className="transition hover:text-white break-all"
+                >
+                  Albertoramosturismo@hotmail.com
+                </a>
               </div>
               <div className="flex items-start gap-3">
                 <Clock3 className="mt-0.5 h-4 w-4 shrink-0 text-[#da0200]" />

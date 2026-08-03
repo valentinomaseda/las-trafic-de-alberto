@@ -27,7 +27,43 @@ const itemVariants: Variants = {
   visible: { opacity: 1, x: 0, transition: { type: 'spring', stiffness: 100 } }
 };
 
+const FOTOS_FLOTA = [
+  '/images/trafics/trafic-nueva.jpeg',
+  '/images/trafics/trafic-nueva2.jpeg',
+  '/images/trafics/trafic-nueva3.jpeg',
+  '/images/trafics/trafic-nueva4.jpeg',
+  '/images/trafics/trafic-nueva5.jpeg',
+];
+
 export default function ServicesOverview() {
+  const [current, setCurrent] = React.useState(0);
+  const dragStartX = React.useRef<number | null>(null);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % FOTOS_FLOTA.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
+    dragStartX.current = 'touches' in e ? e.touches[0].clientX : e.clientX;
+  };
+
+  const handleDragEnd = (e: React.MouseEvent | React.TouchEvent) => {
+    if (dragStartX.current === null) return;
+    const endX = 'changedTouches' in e ? e.changedTouches[0].clientX : e.clientX;
+    const delta = dragStartX.current - endX;
+    if (Math.abs(delta) > 40) {
+      setCurrent((prev) =>
+        delta > 0
+          ? (prev + 1) % FOTOS_FLOTA.length
+          : (prev - 1 + FOTOS_FLOTA.length) % FOTOS_FLOTA.length
+      );
+    }
+    dragStartX.current = null;
+  };
+
   return (
     <section id="flota" className="w-full py-24 bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] overflow-hidden relative">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-[linear-gradient(180deg,rgba(218,2,0,0.06),transparent)]" />
@@ -87,7 +123,7 @@ export default function ServicesOverview() {
             </motion.div>
           </motion.div>
 
-          {/* Columna Visual: Composición de Doble Exposición */}
+          {/* Columna Visual: Carrusel de fotos de la flota nueva */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -95,34 +131,48 @@ export default function ServicesOverview() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="relative order-1 lg:order-2 h-[500px] sm:h-[600px] w-full"
           >
-            {/* Imagen Principal (Exterior) */}
-            <div className="absolute top-0 right-0 w-4/5 h-[85%] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200/60 z-0">
-              <Image
-                src="/images/trafics/trafic1.jpeg"
-                alt="Flota Las Trafic De Alberto"
-                fill
-                className="object-cover transition-transform duration-1000 hover:scale-105"
-                sizes="(max-width: 1024px) 80vw, 40vw"
-              />
-              <div className="absolute inset-0 bg-slate-900/10" />
-            </div>
-
-            {/* Imagen Secundaria (Exterior / Confianza) superpuesta */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="absolute bottom-0 left-0 w-3/5 h-[55%] rounded-[2rem] overflow-hidden shadow-2xl border-8 border-white z-10"
+            {/* Carrusel principal */}
+            <div
+              className="absolute top-0 right-0 w-full h-full rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200/60 z-0 cursor-grab active:cursor-grabbing select-none"
+              onMouseDown={handleDragStart}
+              onMouseUp={handleDragEnd}
+              onTouchStart={handleDragStart}
+              onTouchEnd={handleDragEnd}
             >
-              <Image
-                src="/images/trafics/trafic2.jpeg"
-                alt="Flota moderna Las Trafic De Alberto"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 60vw, 30vw"
-              />
-            </motion.div>
+              {FOTOS_FLOTA.map((src, i) => (
+                <div
+                  key={src}
+                  className="absolute inset-0 transition-opacity duration-700"
+                  style={{ opacity: i === current ? 1 : 0 }}
+                >
+                  <Image
+                    src={src}
+                    alt={`Flota Las Trafic De Alberto - foto ${i + 1}`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority={i === 0}
+                  />
+                </div>
+              ))}
+              <div className="absolute inset-0 bg-slate-900/10" />
+
+              {/* Indicadores de punto */}
+              <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                {FOTOS_FLOTA.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrent(i)}
+                    aria-label={`Ver foto ${i + 1}`}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      i === current
+                        ? 'w-6 bg-white'
+                        : 'w-2 bg-white/50 hover:bg-white/80'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
 
             {/* Sello de Autoridad Visual (CNRT) */}
             <motion.div
@@ -130,7 +180,7 @@ export default function ServicesOverview() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5, type: "spring", stiffness: 120 }}
-              className="absolute top-10 -left-6 sm:left-0 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-4 z-20"
+              className="absolute top-10 -left-6 sm:left-4 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-4 z-20"
             >
               <div className="relative flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#da0200] to-red-600 text-white shadow-inner">
                 <ShieldCheck className="w-7 h-7" />

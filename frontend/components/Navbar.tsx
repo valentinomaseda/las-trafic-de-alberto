@@ -16,7 +16,7 @@ const navItems = [
   { label: 'Shows', href: '#shows' },
   { label: 'Vacaciones', href: '#vacaciones' },
   { label: 'Soluciones', href: '#soluciones' },
-  { label: 'Servicios', href: '#flota' },
+  { label: 'Nuestra flota', href: '#flota' },
   { label: 'Ubicacion', href: '#ubicacion' },
   { label: 'Opiniones', href: '#opiniones' },
 ];
@@ -35,8 +35,8 @@ export function Navbar() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${scrolled
-          ? 'border-[#e8e9ed] bg-white/95 shadow-sm backdrop-blur'
-          : 'border-transparent bg-transparent'
+        ? 'border-[#e8e9ed] bg-white/95 shadow-sm backdrop-blur'
+        : 'border-transparent bg-transparent'
         }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">

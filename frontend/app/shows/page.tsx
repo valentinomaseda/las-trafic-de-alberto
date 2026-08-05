@@ -16,7 +16,7 @@ import { Footer } from '@/components/Footer';
 import { supabase, type Show } from '@/lib/supabase';
 import { ShowCard } from '@/components/ShowsSection';
 
-const WHATSAPP_NUMBER = '5492478505684';
+const WHATSAPP_NUMBER = '5492478504811';
 const BRAND_RED = '#da0200';
 const PAGE_SIZE = 9;
 

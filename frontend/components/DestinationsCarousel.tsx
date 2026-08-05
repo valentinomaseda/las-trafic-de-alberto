@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { supabase, type Package } from '@/lib/supabase';
 
 const BRAND_RED = '#da0200';
-const WHATSAPP_NUMBER = '5492478505684';
+const WHATSAPP_NUMBER = '5492478504811';
 
 function buildWhatsappHref(pkg: Package) {
   const tags = pkg.tags || [];

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Map, Users, CalendarDays, Send } from 'lucide-react';
 
 export default function SmartLeadGenerator() {
-  const telefonoWhatsApp = '5492478505684';
+  const telefonoWhatsApp = '5492478504811';
   const [formData, setFormData] = useState({
     destino: '',
     pasajeros: '',

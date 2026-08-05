@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { MapPin, Clock, Shield, Star, Users, Award } from 'lucide-react';
+import { MapPin, Clock, Shield, Star, Users, Award, Mail, Phone, Instagram, Facebook } from 'lucide-react';
 import Image from 'next/image'; // Asumiendo Next.js. Cambiar por <img> si usas Vite puro.
 
 const BRAND_RED = '#da0200';
@@ -71,6 +71,44 @@ export function AboutPreview() {
               <p className="text-lg text-slate-600 leading-relaxed max-w-lg">
                 No somos una empresa anónima. Nacimos en Arrecifes, conocemos a nuestra gente y ponemos la cara en cada viaje para garantizar tu tranquilidad.
               </p>
+
+              {/* Links de contacto */}
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a
+                  href="https://wa.me/5492478504811?text=Hola%20Alberto%2C%20quiero%20pedir%20informacion%20y%20coordinar%20un%20viaje."
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-[#25D366]/25 transition hover:opacity-90"
+                >
+                  <Phone className="h-4 w-4" />
+                  WhatsApp
+                </a>
+                <a
+                  href="https://www.instagram.com/lastraficdealberto/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-[#f09433] via-[#e6683c] via-[#dc2743] via-[#cc2366] to-[#bc1888] px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-pink-500/25 transition hover:opacity-90"
+                >
+                  <Instagram className="h-4 w-4" />
+                  Instagram
+                </a>
+                <a
+                  href="https://www.facebook.com/lastrafic.dealberto"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#1877F2] px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-[#1877F2]/25 transition hover:opacity-90"
+                >
+                  <Facebook className="h-4 w-4" />
+                  Facebook
+                </a>
+                <a
+                  href="mailto:Albertoramosturismo@hotmail.com"
+                  className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-[#da0200] hover:text-[#da0200]"
+                >
+                  <Mail className="h-4 w-4" />
+                  Albertoramosturismo@hotmail.com
+                </a>
+              </div>
             </motion.div>
 
             <motion.div

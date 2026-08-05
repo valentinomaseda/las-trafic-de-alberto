@@ -130,7 +130,7 @@ export default function ServiceSolutions() {
             const Icon = solucion.icon;
             
             // Reemplazar este href con la lógica real de WhatsApp (ej: abriendo modal o wa.me)
-            const whatsappLink = `https://wa.me/5492478505684?text=${encodeURIComponent(`Hola Alberto, quiero consultar por el servicio de ${solucion.title}.`)}`;
+            const whatsappLink = `https://wa.me/5492478504811?text=${encodeURIComponent(`Hola Alberto, quiero consultar por el servicio de ${solucion.title}.`)}`;
 
             return (
               <motion.a

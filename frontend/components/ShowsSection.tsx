@@ -7,7 +7,7 @@ import { Calendar, MapPin, Music, ArrowRight, MessageCircle } from 'lucide-react
 import Image from 'next/image';
 import Link from 'next/link';
 
-const WHATSAPP_NUMBER = '5492478505684';
+const WHATSAPP_NUMBER = '5492478504811';
 const BRAND_RED = '#da0200';
 const HOME_LIMIT = 6;
 

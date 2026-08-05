@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { MapPin, Navigation, PhoneCall } from 'lucide-react';
 import { SectionReveal } from './SectionReveal';
 
-const WHATSAPP_NUMBER = '5492478505684';
+const WHATSAPP_NUMBER = '5492478504811';
 const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hola Alberto, quiero consultar por la ubicacion de la oficina y coordinar una visita.')}`;
 
 const businessHours = [

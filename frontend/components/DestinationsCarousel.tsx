@@ -139,6 +139,18 @@ export default function DestinationsCarousel() {
               ))
           }
         </div>
+
+        {/* Botón Ver todos — solo visible en mobile, centrado */}
+        <div className="mt-8 flex justify-center md:hidden">
+          <Link
+            href="/paquetes"
+            className="group inline-flex items-center gap-2 rounded-full border-2 px-6 py-3 text-sm font-semibold transition-all hover:opacity-80"
+            style={{ color: BRAND_RED, borderColor: BRAND_RED }}
+          >
+            Ver todos los destinos
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+        </div>
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `

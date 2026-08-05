@@ -10,15 +10,15 @@ import { useScrolled } from '../hooks/useScrolled';
 const whatsappHref = 'https://wa.me/5492478504811?text=Hola%20quiero%20cotizar%20un%20viaje%20con%20Las%20Trafic%20De%20Alberto';
 
 const navItems = [
-  { label: 'Inicio', href: '#top' },
-  { label: 'Destinos', href: '#destinos' },
-  { label: 'Nosotros', href: '#nosotros' },
-  { label: 'Shows', href: '#shows' },
-  { label: 'Vacaciones', href: '#vacaciones' },
-  { label: 'Soluciones', href: '#soluciones' },
-  { label: 'Nuestra flota', href: '#flota' },
-  { label: 'Ubicacion', href: '#ubicacion' },
-  { label: 'Opiniones', href: '#opiniones' },
+  { label: 'Inicio', href: '/#top' },
+  { label: 'Destinos', href: '/#destinos' },
+  { label: 'Nosotros', href: '/#nosotros' },
+  { label: 'Shows', href: '/#shows' },
+  { label: 'Vacaciones', href: '/#vacaciones' },
+  { label: 'Soluciones', href: '/#soluciones' },
+  { label: 'Nuestra flota', href: '/#flota' },
+  { label: 'Ubicacion', href: '/#ubicacion' },
+  { label: 'Opiniones', href: '/#opiniones' },
 ];
 
 export function Navbar() {

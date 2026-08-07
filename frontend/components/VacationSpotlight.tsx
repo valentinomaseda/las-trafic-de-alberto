@@ -8,19 +8,24 @@ import { SectionReveal } from './SectionReveal';
 
 const travelerImages = [
   {
-    title: 'Viajes Familiares',
-    subtitle: 'La familia unida, sin dividir el grupo en varios autos ni discutir por la ruta.',
-    src: '/images/gente.jpg', // Recordá reemplazar con fotos reales
+    title: 'Recitales',
+    subtitle: 'Acompañamos tu pasión a cada recital: viajes seguros, ambiente inmejorable y la garantía de llegar a destino junto a los tuyos.',
+    src: '/images/gente.jpeg',
   },
   {
-    title: 'Escapadas con Amigos',
-    subtitle: 'Nos encargamos del volante para que el grupo empiece a disfrutar desde que sube.',
-    src: '/images/gente2.jpg',
+    title: 'Recitales',
+    subtitle: 'Ideal para agrupaciones y peñas; combinamos capacidad, puntualidad y pura mística rutera para los eventos más convocantes del país.',
+    src: '/images/gente2.jpeg',
   },
   {
-    title: 'Grupos y Delegaciones',
-    subtitle: 'Logística milimétrica para que grandes grupos lleguen a tiempo y descansados.',
-    src: '/images/gente3.jpg',
+    title: 'Turismo y Cultural',
+    subtitle: 'Facilitamos tus salidas culturales y grupales, asegurando que la experiencia excepcional comience con comodidad desde que subís a la trafic.',
+    src: '/images/gente3.jpeg',
+  },
+  {
+    title: 'Viajes Turísticos',
+    subtitle: 'Viajá con total tranquilidad y confort; nuestras unidades están preparadas para que tu grupo disfrute cada kilómetro de la ruta.',
+    src: '/images/gente4.jpeg',
   },
 ];
 

@@ -32,7 +32,7 @@ export function Footer() {
                 <Image src="/images/logo.jpg" alt="Las Trafic De Alberto" width={56} height={56} className="h-full w-full object-cover" />
               </span>
               <span>
-                <span className="block text-lg font-semibold text-white">Las Trafic de Alberto</span>
+                <span className="block text-lg font-semibold text-white">Las Trafic de Alberto. </span>
                 <span className="block text-sm text-slate-300">Viajes grupales, traslados y excursiones</span>
               </span>
             </Link>

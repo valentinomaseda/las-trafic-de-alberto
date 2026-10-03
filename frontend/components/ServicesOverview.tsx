@@ -28,6 +28,7 @@ const itemVariants: Variants = {
 };
 
 const FOTOS_FLOTA = [
+  '/images/trafics/sur.jpeg',
   '/images/trafics/trafic-nueva.jpeg',
   '/images/trafics/trafic-nueva2.jpeg',
   '/images/trafics/trafic-nueva3.jpeg',
@@ -164,11 +165,10 @@ export default function ServicesOverview() {
                     key={i}
                     onClick={() => setCurrent(i)}
                     aria-label={`Ver foto ${i + 1}`}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      i === current
-                        ? 'w-6 bg-white'
-                        : 'w-2 bg-white/50 hover:bg-white/80'
-                    }`}
+                    className={`h-2 rounded-full transition-all duration-300 ${i === current
+                      ? 'w-6 bg-white'
+                      : 'w-2 bg-white/50 hover:bg-white/80'
+                      }`}
                   />
                 ))}
               </div>
